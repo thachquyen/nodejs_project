@@ -1,0 +1,26 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "first create new project with nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thachquyen/nodejs_project.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "thachquyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thachquyen/nodejs_project/issues"
+  },
+  "homepage": "https://github.com/thachquyen/nodejs_project#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
