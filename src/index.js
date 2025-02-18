@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import { engine } from 'express-handlebars';
+import route from './routes/index.js';
 
 const app = express();
 
@@ -14,10 +15,7 @@ app.set('view engine', 'hbs');
 // Set the views directory
 app.set('views', './src/views');
 
-
-// Example route
-app.get('/', (req, res) => {
-    res.render('home');
-});
+// route init
+route(app);
 
 app.listen(3000);
