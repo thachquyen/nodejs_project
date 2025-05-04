@@ -1,0 +1,67 @@
+<div class="flex w-full h-auto mt-4 my-auto justify-center ">
+    <div class="rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 flex justify-center p-8">
+        <form method="post" action="/cat/{{cat._id}}?_method=PUT" class="w-full max-w-lg">
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        Name
+                    </label>
+                    <input value="{{ cat.name }}" name="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Cat Name">
+                    <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        Color
+                    </label>
+                    <input value="{{ cat.color }}" name="color" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="color">
+                    <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                </div>
+
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        Eyes
+                    </label>
+                    <input value="{{ cat.eyes }}" name="eyes" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="eyes">
+                    <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        Description
+                    </label>
+                    <textarea name="description" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" placeholder="Cat is a friend">
+                        {{ cat.description }}
+                    </textarea>
+                    <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        Image
+                    </label>
+                    <img src="/{{ cat.image }}" alt="{{ cat.name }}"/>
+                    <input name="image" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="file" placeholder="slug name">
+                    <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                </div>
+
+                <div class="w-full  md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        Video
+                    </label>
+                    <input value="{{ cat.video }}" name="video" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="video">
+                    <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                </div>
+
+                <div class="w-full px-3 mb-6 md:mb-0 mt-8">
+                    <button class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 cursor-pointer border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">
+                        save
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

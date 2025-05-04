@@ -1,0 +1,236 @@
+<div class="flex justify-between items-baseline mb-4">
+    <div class="text-2xl font-semibold ml-8"><h3>Cat List</h3></div>
+    <div class="mt-4 mb-4">
+        <a href="/create" class="cursor-pointer text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+            <span>New Cat</span>
+        </a>
+    </div>
+
+</div>
+
+<div class="relative flex flex-col w-full h-full text-gray-700 bg-white shadow-md rounded-lg bg-clip-border pl-5 pr-5">
+    <table class="w-full text-left table-auto min-w-max">
+        <thead>
+        <tr>
+            <th class="p-4 border-b border-slate-200 bg-slate-50">
+                <input id="selectAll" type="checkbox"
+                        class="w-full pr-11 h-4 pl-3 py-2 bg-transparent text-sm border border-slate-200 rounded transition duration-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 cursor-pointer"
+                />
+            </th>
+            <th class="p-4 border-b border-slate-200 bg-slate-50">
+                <p class="text-sm font-normal leading-none text-slate-500">
+                    No.
+                </p>
+            </th>
+            <th class="p-4 border-b border-slate-200 bg-slate-50">
+                <p class="text-sm font-normal leading-none text-slate-500">
+                    Avatar
+                </p>
+            </th>
+            <th class="p-4 border-b border-slate-200 bg-slate-50">
+                <p class="text-sm font-normal leading-none text-slate-500">
+                    Name
+                </p>
+            </th>
+            <th class="p-4 border-b border-slate-200 bg-slate-50">
+                <p class="text-sm font-normal leading-none text-slate-500">
+                    Description
+                </p>
+            </th>
+            <th class="p-4 border-b border-slate-200 bg-slate-50">
+                <p class="text-sm font-normal leading-none text-slate-500">
+                    Date
+                </p>
+            </th>
+            <th class="p-4 border-b border-slate-200 bg-slate-50">
+                <p class="text-sm font-normal leading-none text-slate-500">
+                    Action
+                </p>
+            </th>
+        </tr>
+        </thead>
+        <tbody id="table-body">
+    {{#each cat}}
+        <tr class="hover:bg-slate-50 border-b border-slate-200">
+            <td class="p-4 py-5">
+                <input value="{{this._id}}" name="check-items" type="checkbox"
+                       class="checkbox-item w-full pr-11 h-4 pl-3 py-2 bg-transparent text-sm border border-slate-200 rounded transition duration-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 cursor-pointer"
+                />
+            </td>
+            <td class="p-4 py-5">
+<!--                <p class="block font-semibold text-sm text-slate-800">{{numRow @index}}</p>-->
+                <p class="block font-semibold text-sm text-slate-800"> {{addIndex @index ../currentPage ../pageSize}}</p>
+            </td>
+            <td class="p-4 py-5">
+                <img class="w-16 h-16 object-cover rounded" src="/{{this.image}}">
+            </td>
+            <td class="p-4 py-5">
+                <p class="text-sm text-slate-500">{{this.name}}</p>
+            </td>
+            <td class="p-4 py-5">
+                <p class="text-sm text-slate-500">{{this.description}}</p>
+            </td>
+            <td class="p-4 py-5">
+                <p class="text-sm text-slate-500">{{formatDate this.createdAt}}</p>
+            </td>
+            <td class="p-4 py-5 flex">
+                <a href="/cat/edit/{{this._id}}" class="cursor-pointer relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                    <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-4 w-4">
+                            <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
+                        </svg>
+                    </span>
+                </a>
+                <a onclick="deleteCat('{{this._id}}')" class="cursor-pointer relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                    <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke-width="2.5" stroke="currentColor" class="w-5 h-5 cursor-pointer">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </span>
+                </a>
+            </td>
+        </tr>
+    {{else}}
+        <tr class="hover:bg-slate-50 border-b border-slate-200">
+            <td class="p-4 py-5" colspan="5">
+                <p>Not have cat list</p>
+            </td>
+        </tr>
+    {{/each}}
+        </tbody>
+    </table>
+
+    <div class="flex justify-between items-center px-4 py-3">
+        <div>
+            <button class="mt-4 cursor-pointer text-white bg-gradient-to-r from-red-200 via-red-400 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" id="deleteSelected" disabled>Delete All</button>
+        </div>
+        <div class="text-sm text-slate-500">
+            Showing <b>{{startIndex}}-{{endIndex}}</b> of {{totalCount}}
+        </div>
+        <nav>
+            <ul class="flex space-x-1 cursor-pointer pagination">
+
+            {{#range 1 totalPages}}
+                <li class="{{#if (eq this currentPage)}}active{{/if}} px-3 py-1 min-w-9 min-h-9 text-sm font-normal text-white bg-slate-800 border border-slate-800 rounded hover:bg-slate-600 hover:border-slate-600 transition duration-200 ease">
+                    <a class="block" href="?page={{this}}">{{this}}</a>
+                </li>
+            {{/range}}
+
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<script>
+    function deleteCat(catId) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to undo this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "Cancel"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/cat/${catId}`, { method: 'DELETE' })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Swal.fire("Deleted!", "The cat has been removed.", "success").then(() => {
+                            //     window.location.reload();
+                            // });
+                            window.location.reload();
+                        } else {
+                            Swal.fire("Error", "Failed to delete.", "error");
+                        }
+                    })
+                    .catch(err => console.error("Error:", err));
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        $(".page-btn").click(function () {
+            let page = $(this).data("page");
+
+            $.ajax({
+                url: `/cat/list?page=${page}`,
+                type: "GET",
+                success: function (data) {
+                    $("#table-body").html($(data).find("#table-body").html());
+                    $("#pagination").html($(data).find("#pagination").html());
+                },
+            });
+        });
+
+        // Function to update button state
+        function updateDeleteButton() {
+            if ($(".checkbox-item:checked").length > 0) {
+                $("#deleteSelected").prop("disabled", false);
+            } else {
+                $("#deleteSelected").prop("disabled", true);
+            }
+        }
+
+        // "Select All" checkbox functionality
+        $("#selectAll").click(function() {
+            $(".checkbox-item").prop("checked", this.checked);
+            updateDeleteButton();
+        });
+
+        // Individual checkbox click event
+        $(".checkbox-item").click(function() {
+            if (!$(this).prop("checked")) {
+                $("#selectAll").prop("checked", false);
+            }
+            if ($(".checkbox-item:checked").length === $(".checkbox-item").length) {
+                $("#selectAll").prop("checked", true);
+            }
+            updateDeleteButton();
+        });
+
+        // "Delete Selected" button click event
+        $("#deleteSelected").click(function() {
+            let selectedIds = $(".checkbox-item:checked").map(function() {
+                return $(this).val().trim(); // ✅ Ensure no empty values
+            }).get();
+
+            if (selectedIds.length === 0 || selectedIds.includes("")) {
+                Swal.fire("Warning!", "Please select at least one valid item.", "warning");
+                return;
+            }
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "This action cannot be undone!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Yes, delete!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "/cat/delete-multiple",
+                        method: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify({ ids: selectedIds }),
+                        success: function(response) {
+                            Swal.fire("Deleted!", "Your items have been deleted.", "success").then(() => {
+                                location.reload();
+                            });
+                        },
+                        error: function(xhr) {
+                            console.error("Error Response:", xhr.responseText); // ✅ Debugging step
+                            Swal.fire("Error!", "Something went wrong.", "error");
+                        }
+                    });
+                }
+            });
+        });
+    });
+
+</script>
+

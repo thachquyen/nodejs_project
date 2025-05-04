@@ -1,1 +1,40 @@
-<h1>Home page</h1>
+<div class="grid grid-cols-none w-full h-screen mt-4 my-auto">
+    <div class="title"><h3 class="text-5xl font-semibold text-center mt-4 -mb-10-">Cat</h3></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pl-4 pr-4 my-8">
+        {{#each cat}}
+        <div class="">
+            <div class="border border-solid border-yellow-500">
+                <div class="cat-img">
+                    <a href="/{{this.slug}}"><img class="h-120 w-full object-cover" src="{{this.image}}"  alt="{{this.name}}"></a>
+                </div>
+                <div class="p-4">
+                    <a href="/{{this.slug}}">
+                        <h5 class="text-lg font-medium">{{this.name}}</h5>
+                    </a>
+                    <p class="card-text">{{this.description}}</p>
+                    <div class="mt-10"><a class="p-2 bg-yellow-300 hover:bg-yellow-200 rounded-sm" href="/{{this.slug}}">Raise Now</a></div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="title"><h3 class="text-5xl font-semibold text-center">Dog</h3></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pl-4 pr-4 my-8">
+        {{#each cat}}
+            <div class="">
+                <div class="border border-solid border-yellow-500">
+                    <div class="cat-img">
+                        <a href="/{{this.slug}}"><img class="h-120 w-full object-cover" src="{{this.image}}"  alt="{{this.name}}"></a>
+                    </div>
+                    <div class="p-4">
+                        <a href="/{{this.slug}}">
+                            <h5 class="text-lg font-medium">{{this.name}}</h5>
+                        </a>
+                        <p class="card-text">{{this.description}}</p>
+                        <div class="mt-10"><a class="p-2 bg-yellow-300 hover:bg-yellow-200 rounded-sm" href="/{{this.slug}}">Raise Now</a></div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
